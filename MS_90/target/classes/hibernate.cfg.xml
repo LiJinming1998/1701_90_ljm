@@ -1,0 +1,40 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD//EN"
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+        <!--driverClassName-->
+        <property name="driverClassName">com.mysql.jdbc.Driver</property>
+        <property name="url">
+            jdbc:mysql://127.0.0.1:3306/student_ms?useUnicode=true&amp;characterEncoding=utf8&amp;useSSL=false&amp;serverTimezone=UTC
+        </property>
+        <property name="username">root</property>
+        <property name="password">199853</property>
+
+
+        <!-- 方言 -->
+        <property name="dialect">org.hibernate.dialect.MySQL5Dialect</property>
+        <!--  数据源：数据库连接池-->
+        <property name="connection.provider_class">
+            com.alibaba.druid.support.hibernate.DruidConnectionProvider
+        </property>
+        <!--注册当前session上下文，保证同一线程中获取的session是同一session     -->
+        <property name="hibernate.current_session_context_class">thread</property>
+        <!--  开启sql统计 -->
+        <property name="filters">stat</property>
+        <!-- 是否在控制台中打印sql -->
+        <property name="show_sql">true</property>
+        <!-- 是否格式化sql -->
+        <property name="format_sql">true</property>
+
+        <property name="hibernate.hbm2ddl.auto">update</property>
+
+        <property name="hibernate.cache.use_second_level_cache">false</property>
+        <!-- 配置需要映射的文件-->
+        <mapping class="PO.Student"/>
+        <mapping class="PO.Admin"/>
+        <mapping class="PO.Score"/>
+
+    </session-factory>
+</hibernate-configuration>

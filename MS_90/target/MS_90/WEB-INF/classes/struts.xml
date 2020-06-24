@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.5//EN"
+        "http://struts.apache.org/dtds/struts-2.5.dtd">
+
+<struts>
+    <package name="default" namespace="/" extends="struts-default">
+        <action name="hello">
+            <result name="success">/s_login.jsp</result>
+            <result name="error">/error.jsp</result>
+        </action>
+
+        <action name="student_login" class="action.StudentAction" method="login">
+            <result name="input">/s_login.jsp</result>
+            <result name="success" type="chain">findSelf</result>
+            <result name="error">/s_login.jsp</result>
+        </action>
+        <action name="findSelf" class="action.StudentAction" method="findSelf">
+            <result name="success">/s_findself.jsp</result>
+            <result name="error">/error.jsp</result>
+        </action>
+
+        <action name="student_register" class="action.StudentAction" method="register">
+            <result name="input">/s_register.jsp</result>
+            <result name="success">/login_success.jsp</result>
+            <result name="error">/s_register.jsp</result>
+        </action>
+
+        <action name="student_insert" class="action.StudentAction" method="insert">
+            <result name="success" type="chain">findAll</result>
+            <result name="error">/error.jsp</result>
+        </action>
+
+        <action name="student_update" class="action.StudentAction" method="update">
+            <result name="success" type="chain">findAll</result>
+            <result name="error">/error.jsp</result>
+        </action>
+
+        <action name="student_delete" class="action.StudentAction" method="delete">
+            <result name="success" type="chain">findAll</result>
+            <result name="error">/error.jsp</result>
+        </action>
+
+        <action name="findDept" class="action.StudentAction" method="findDept">
+            <result name="success">/s_query.jsp</result>
+            <result name="error">/error.jsp</result>
+        </action>
+
+        <action name="findName" class="action.StudentAction" method="findName">
+            <result name="success">/s_query.jsp</result>
+            <result name="error">/error.jsp</result>
+        </action>
+
+
+        <action name="admin_login" class="action.AdminAction" method="login">
+            <result name="success" type="chain">findAll</result>
+            <result name="error">/a_login.jsp</result>
+        </action>
+
+
+        <action name="findAll" class="action.StudentAction" method="findAll">
+            <result name="success">/s_query.jsp</result>
+            <result name="error">/error.jsp</result>
+        </action>
+        <!--<action name="findAll_ordinary" class="action.StudentAction" method="findAll">
+            <result name="success">/s_query_ordinary.jsp</result>
+            <result name="error">/error.jsp</result>
+        </action>
+-->
+    </package>
+</struts>
